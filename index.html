@@ -38,11 +38,7 @@
   img,video{-webkit-user-drag:none;}
   ::selection{background:transparent;color:inherit;}
   a{touch-action:manipulation;}
-  #plexus{
-    position:fixed;inset:0;z-index:-1;pointer-events:none;
-    transform:translateZ(0);
-    will-change:transform;
-  }
+  #plexus{position:fixed;inset:0;z-index:-1;pointer-events:none;}
   .page{width:min(760px,100%);}
   .header{position:relative;margin-top:24px;}
   .cover{
@@ -595,29 +591,18 @@
   const STYLES=Array.from({length:NB},(_,k)=>`rgba(124,92,255,${(0.16*(k+0.5)/NB).toFixed(3)})`);
   const SEGS=Array.from({length:NB},()=>[]);
   let W=0,H=0,PTS=[],plexusPaused=false,plexusLast=0;
-  const initPTS=()=>{
+  const resizeCanvas=()=>{
+    const d=Math.min(win.devicePixelRatio||1,1.5);
+    W=win.innerWidth;H=win.innerHeight;
+    cv.width=W*d;cv.height=H*d;
+    cv.style.width=W+'px';cv.style.height=H+'px';
+    ctx.setTransform(d,0,0,d,0,0);
     const n=Math.max(28,Math.min(70,(W*H/20000)|0));
     PTS=Array.from({length:n},()=>({
       x:Math.random()*W,y:Math.random()*H,
       vx:(Math.random()-.5),vy:(Math.random()-.5),
       r:Math.random()*1.5+.6
     }));
-  };
-  const resizeCanvas=()=>{
-    const w=win.innerWidth,h=win.innerHeight;
-    if(w===W&&h===H)return;
-    const d=Math.min(win.devicePixelRatio||1,1.5);
-    if(!PTS.length){
-      W=w;H=h;
-      initPTS();
-    }else{
-      const sx=w/W,sy=h/H;
-      W=w;H=h;
-      for(const p of PTS){p.x*=sx;p.y*=sy;}
-    }
-    cv.width=W*d;cv.height=H*d;
-    cv.style.width=W+'px';cv.style.height=H+'px';
-    ctx.setTransform(d,0,0,d,0,0);
   };
   const drawPlexus=()=>{
     ctx.clearRect(0,0,W,H);
