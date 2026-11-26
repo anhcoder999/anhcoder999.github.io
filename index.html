@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="description" content="Portfolio & CV của Nguyễn Tuấn Anh (Anh Lusilfer) — học sinh lớp 12, tự học lập trình, giao diện web hiệu năng cao, phong cách terminal." />
+<meta name="theme-color" content="#060606" />
+<meta property="og:title" content="Anh Lusilfer • ~/portfolio" />
+<meta property="og:description" content="Frontend tự học • 7 ngôn ngữ • Sẵn sàng cho cơ hội thực tập." />
+<meta property="og:type" content="profile" />
+<meta property="og:image" content="avatar.jpg" />
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%23060606"/><text x="32" y="43" font-family="monospace" font-size="26" font-weight="700" fill="%23f4f7f4" text-anchor="middle">AL</text></svg>' />
+<title>Anh Lusilfer — ~/portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Nguyễn Tuấn Anh","alternateName":"Anh Lusilfer","email":"mailto:ta690620@gmail.com","jobTitle":"Frontend Developer","knowsLanguage":["HTML","CSS","JavaScript","TypeScript","C#","Lua","Python"],"sameAs":["https://www.facebook.com/profile.php?id=61595290078900","https://www.tiktok.com/@anhlusilfer"]}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;border-radius:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+  :root{
+    --bg:#060606;--panel:#0a0a0a;--line:#282828;--line2:#191919;
+    --txt:#d6dad6;--mut:#969c96;--dim:#636963;
+    --acc:#f4f7f4;--amb:#ffc46b;
+    --eo:cubic-bezier(.16,1,.3,1);
+    --barh:44px;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    color-scheme:dark;
+  }
+  html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#2c2c2c #0a0a0a;touch-action:pan-x pan-y;}
+  body{touch-action:pan-x pan-y;}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:#0a0a0a;}
+  ::-webkit-scrollbar-thumb{background:#2c2c2c;border:2px solid #060606;}
+  ::-webkit-scrollbar-thumb:hover{background:#3d3d3d;}
+  ::selection{background:transparent;color:inherit;}
+  body{font-family:var(--mono);background:var(--bg);color:var(--txt);min-height:100vh;padding:0 14px;}
+  body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(640px 420px at 32% 22%,rgba(255,255,255,.045),transparent 62%),radial-gradient(520px 380px at 74% 78%,rgba(255,196,107,.03),transparent 60%);animation:drift 30s ease-in-out infinite alternate;}
+  body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);}
+  body.lock{overflow:hidden;}
+  img{display:block;-webkit-user-drag:none;}
+  a{color:var(--acc);text-decoration:none;}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+  button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px;}
+  .skip{position:fixed;top:-60px;left:14px;z-index:400;padding:10px 14px;background:var(--panel);border:1px solid var(--acc);color:var(--txt);font-size:12px;font-weight:700;transition:top .2s;}
+  .skip:focus{top:12px;}
+  .booting .term,.booting .skip{visibility:hidden;}
+  #prog{position:fixed;top:0;left:0;height:2px;width:100%;z-index:100;background:var(--acc);transform-origin:0 50%;transform:scaleX(0);pointer-events:none;}
+  #intro{position:fixed;inset:0;z-index:300;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;transition:opacity .5s ease,visibility 0s .5s;}
+  #intro.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  #intro.gate{cursor:pointer;}
+  .in-term{width:min(640px,100%);border:1px solid var(--line);background:var(--panel);box-shadow:0 0 0 1px #000,0 24px 70px rgba(0,0,0,.65);}
+  .in-head{padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut);background:#0d0d0d;}
+  #inLog{height:min(320px,48vh);overflow:hidden;padding:14px;font-size:11.5px;line-height:1.75;color:#b9bfb9;word-break:break-all;}
+  #inLog .ok{color:#fff;font-weight:700;}
+  #inLog .hex{color:var(--dim);}
+  .in-bar{height:6px;border-top:1px solid var(--line);background:#0d0d0d;}
+  #inFill{display:block;height:100%;width:0;background:var(--acc);transition:width .12s linear;}
+  .in-enter{padding:13px 14px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--acc);border-top:1px solid var(--line2);animation:blink 1.4s steps(1) infinite;}
+  .in-foot{display:flex;justify-content:space-between;gap:10px;padding:8px 14px;font-size:10.5px;color:var(--dim);border-top:1px solid var(--line2);}
+  .term{width:min(880px,100%);margin:26px auto 60px;border:1px solid var(--line);background:var(--panel);box-shadow:0 0 0 1px #000,0 24px 70px rgba(0,0,0,.65);}
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:#0d0d0d;}
+  .dots{display:flex;gap:6px;flex:none;}
+  .dots i{width:10px;height:10px;border:1px solid #3d3d3d;}
+  .dots i:last-child{background:var(--acc);border-color:var(--acc);}
+  .bar-t{flex:none;max-width:32%;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tabs{display:flex;gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:none;font-size:11px;font-weight:700;color:var(--dim);padding:5px 8px;white-space:nowrap;transition:background .12s,color .12s;}
+  .tab.on,.tab:active{background:var(--acc);color:#000;}
+  .ts{display:none;}
+  .pbtn{flex:none;font-size:12px;font-weight:700;color:var(--mut);padding:4px 6px;transition:background .12s,color .12s;}
+  .pbtn.off{color:var(--dim);}
+  .pbtn:disabled{opacity:.5;cursor:not-allowed;}
+  .sec{padding:22px 26px;border-bottom:1px dashed var(--line2);scroll-margin-top:calc(var(--barh) + 10px);}
+  .cmd{font-size:13px;font-weight:700;line-height:1.7;margin-bottom:18px;}
+  .cmd b,.fp b{color:var(--acc);font-weight:700;}
+  .pth{color:var(--mut);}
+  .fl{color:var(--amb);font-weight:500;}
+  .cm{color:var(--dim);font-weight:400;font-size:11.5px;}
+  .idg{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:start;}
+  .avf{position:relative;width:max-content;will-change:transform;}
+  .avf::before,.avf::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--acc);}
+  .avf::before{top:-6px;left:-6px;border-right:none;border-bottom:none;}
+  .avf::after{bottom:-6px;right:-6px;border-left:none;border-top:none;}
+  .av{--avs:148px;width:var(--avs);height:var(--avs);position:relative;overflow:hidden;border:1px solid var(--line);background:#0d0d0d;}
+  .av img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05);opacity:0;transition:opacity .6s ease;}
+  .av.done img{opacity:1;}
+  .av-fb{width:100%;height:100%;display:grid;place-items:center;font-size:44px;font-weight:800;color:var(--acc);opacity:0;transition:opacity .6s ease;}
+  .av.done .av-fb{opacity:1;}
+  .tex{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);}
+  .sa{animation:scanA 3.4s cubic-bezier(.45,0,.55,1) infinite;}
+  .sb{animation:scanB 3.4s cubic-bezier(.45,0,.55,1) infinite;}
+  .scan{position:absolute;left:0;right:0;top:0;height:2px;background:var(--acc);opacity:0;animation-play-state:paused;will-change:transform;}
+  body.entered .scan{opacity:.9;animation-play-state:running;}
+  .avw figcaption{margin-top:12px;font-size:11px;color:var(--dim);}
+  .avw figcaption b{color:var(--acc);font-weight:700;}
+  .name{font-size:clamp(22px,5vw,32px);font-weight:800;line-height:1.2;white-space:nowrap;color:var(--acc);}
+  .cur{display:inline-block;width:.55em;height:1em;margin-left:4px;vertical-align:-.12em;background:var(--acc);animation:blink 1s steps(1) infinite;}
+  .cur.typing{animation:none;opacity:1;}
+  .cur.sm{width:.5em;height:.9em;vertical-align:-.08em;}
+  .handle{margin-top:8px;font-size:12.5px;color:var(--mut);}
+  .stt{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:6px 10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.05);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;}
+  .stt i{width:7px;height:7px;background:#fff;animation:blink 1.6s steps(1) infinite;}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:16px;border:1px solid var(--line);background:var(--line);}
+  .stats>div{background:var(--panel);padding:12px 10px;text-align:center;}
+  .stats b{display:block;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--acc);}
+  .stats span{display:block;margin-top:4px;font-size:10px;color:var(--dim);letter-spacing:.06em;}
+  .bio{font-size:12.5px;color:var(--mut);line-height:1.75;margin-bottom:18px;}
+  .bio::before{content:"# ";color:var(--acc);font-weight:700;}
+  .kv .r{display:flex;align-items:baseline;gap:12px;padding:9px 6px;border-bottom:1px dashed var(--line2);}
+  .kv .r:last-child{border-bottom:none;}
+  .kv dt{font-size:12px;color:var(--mut);font-weight:500;white-space:nowrap;}
+  .ld{flex:1;min-width:16px;border-bottom:1px dotted #3a3a3a;transform:translateY(-3px);}
+  .kv dd{font-size:13px;font-weight:700;text-align:right;min-width:0;overflow-wrap:anywhere;color:var(--acc);}
+  .kv dd.q::before,.kv dd.q::after{content:'"';color:var(--dim);font-weight:400;}
+  .kv dd a{transition:background .12s,color .12s;}
+  .skills{border:1px solid var(--line);}
+  .sk{display:grid;grid-template-columns:10ch minmax(0,1fr) auto 5ch;gap:14px;align-items:center;width:100%;text-align:left;padding:11px 14px;border-bottom:1px solid var(--line2);}
+  .sk:last-child{border-bottom:none;}
+  .perm{font-size:11px;color:var(--dim);}
+  .sid{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;min-width:0;}
+  .sid svg{width:16px;height:16px;flex:none;}
+  .sbar{font-size:12px;white-space:nowrap;}
+  .bf{color:var(--acc);}
+  .br{color:#3a3a3a;}
+  .pct{font-size:12px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;}
+  .sk:active,.sk:focus-visible{background:var(--acc);color:#000;}
+  .sk:active .perm,.sk:focus-visible .perm,.sk:active .pct,.sk:focus-visible .pct,.sk:active .bf,.sk:focus-visible .bf{color:#000;}
+  .sk:active .br,.sk:focus-visible .br{color:rgba(0,0,0,.35);}
+  .sk:active .sid svg,.sk:focus-visible .sid svg{filter:brightness(0);}
+  .links{display:grid;gap:8px;}
+  .ln{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--line);font-size:12.5px;color:var(--txt);}
+  .ln .c{color:var(--acc);font-weight:700;}
+  .ln b{font-weight:700;min-width:9ch;}
+  .ln .u{flex:1;min-width:0;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .ln .arr{color:var(--dim);}
+  .ln:active,.ln:focus-visible{background:var(--acc);border-color:var(--acc);color:#000;}
+  .ln:active .c,.ln:focus-visible .c,.ln:active .arr,.ln:focus-visible .arr{color:#000;}
+  .ln:active .u,.ln:focus-visible .u{color:rgba(0,0,0,.6);}
+  .pbtn:active,.m-x:active{background:var(--acc);color:#000;}
+  .foot{padding:18px 26px 22px;}
+  .fp{font-size:13px;font-weight:700;}
+  .fx{margin-top:10px;font-size:11px;color:var(--dim);}
+  .hb{color:var(--acc);}
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .65s var(--eo),transform .65s var(--eo),background .15s,color .15s,border-color .15s;transition-delay:var(--rd,0s),var(--rd,0s),0s,0s,0s;}
+  .rv.seen{opacity:1;transform:none;}
+  .modal{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.78);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s .22s;}
+  .modal.show{opacity:1;visibility:visible;transition:opacity .28s ease;}
+  .m-card{width:min(560px,100%);max-height:84vh;display:flex;flex-direction:column;background:var(--panel);border:1px solid rgba(255,255,255,.3);box-shadow:0 0 0 1px #000,0 24px 60px rgba(0,0,0,.6);transform:translateY(18px) scale(.97);opacity:0;transition:transform .22s cubic-bezier(.32,0,.67,0),opacity .18s ease;}
+  .modal.show .m-card{transform:none;opacity:1;transition:transform .38s var(--eo),opacity .3s ease;}
+  .m-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:#0d0d0d;}
+  .m-t{flex:1;min-width:0;font-size:12.5px;font-weight:700;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .m-x{flex:none;font-size:13px;font-weight:700;color:var(--mut);padding:2px 6px;transition:background .12s,color .12s;}
+  .m-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 20px;scrollbar-width:thin;scrollbar-color:#2c2c2c #0a0a0a;}
+  .m-body::-webkit-scrollbar{width:8px;}
+  .m-body::-webkit-scrollbar-track{background:#0a0a0a;}
+  .m-body::-webkit-scrollbar-thumb{background:#2c2c2c;border:2px solid #0a0a0a;}
+  .meter{margin-bottom:14px;}
+  .m-lbl{display:flex;justify-content:space-between;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:7px;}
+  .m-lbl b{color:var(--acc);font-size:12px;}
+  .m-track{height:8px;border:1px solid var(--line);background:#0d0d0d;}
+  .m-fill{height:100%;width:0;background:var(--acc);transition:width .8s var(--eo);}
+  .m-desc{font-size:12.5px;color:#adb3ad;line-height:1.7;margin-bottom:14px;}
+  .it{padding:10px 2px;border-bottom:1px dashed var(--line2);}
+  .it b{display:block;font-size:13px;font-weight:700;color:var(--acc);}
+  .it b::before{content:"✓ ";color:var(--acc);}
+  .it span{display:block;margin-top:3px;font-size:12px;color:var(--mut);line-height:1.6;}
+  .m-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .m-tags span{font-size:11px;color:var(--mut);border:1px solid var(--line);padding:4px 8px;}
+  .m-tags span::before{content:"[";color:var(--acc);}
+  .m-tags span::after{content:"]";color:var(--acc);}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+  @keyframes drift{from{transform:translate3d(-2%,-1%,0);}to{transform:translate3d(2%,2%,0);}}
+  @keyframes scanA{0%,100%{transform:translateY(0);}50%{transform:translateY(calc(var(--avs) - 2px));}}
+  @keyframes scanB{0%,100%{transform:translateY(calc(var(--avs) - 2px));}50%{transform:translateY(0);}}
+  @media (hover:hover) and (pointer:fine){
+    .pbtn:hover{background:var(--acc);color:#000;}
+    .m-x:hover{background:var(--acc);color:#000;}
+    .tab:hover{color:var(--acc);}
+    .tab.on:hover{color:#000;}
+    .kv .r:hover{background:rgba(255,255,255,.025);}
+    .kv dd a:hover{background:var(--acc);color:#000;}
+    .sk:hover{background:var(--acc);color:#000;}
+    .sk:hover .perm,.sk:hover .pct,.sk:hover .bf{color:#000;}
+    .sk:hover .br{color:rgba(0,0,0,.35);}
+    .sk:hover .sid svg{filter:brightness(0);}
+    .ln:hover{background:var(--acc);border-color:var(--acc);color:#000;}
+    .ln:hover .c,.ln:hover .arr{color:#000;}
+    .ln:hover .u{color:rgba(0,0,0,.6);}
+  }
+  @media (max-width:820px){
+    .bar-t{display:none;}
+  }
+  @media (max-width:640px){
+    .sec{padding:18px 16px;}
+    .foot{padding:16px 16px 20px;}
+    .idg{grid-template-columns:1fr;gap:18px;}
+    .av{--avs:128px;}
+    .perm{display:none;}
+    .sk{grid-template-columns:minmax(0,1fr) auto 5ch;gap:10px;padding:10px 12px;}
+    .cmd{font-size:12px;}
+    .cm{display:block;margin-top:2px;}
+    .stats b{font-size:18px;}
+    .ln b{min-width:0;}
+    .tf{display:none;}
+    .ts{display:inline;}
+    .tab{padding:5px 8px;}
+    .bar{gap:8px;padding:9px 10px;}
+    .pbtn{font-size:11px;padding:4px 4px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;transition-delay:0s !important;}
+    html{scroll-behavior:auto;}
+  }
+  @media print{
+    *{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;-webkit-user-select:text;user-select:text;}
+    body{background:#fff;color:#000;padding:0;}
+    body::before,body::after,#prog,#intro,.skip,.scan,.tex,.cur,.pbtn,.modal,.dots,.tabs{display:none !important;}
+    .rv{opacity:1 !important;transform:none !important;}
+    .av img,.av-fb{opacity:1 !important;}
+    .term{width:100%;margin:0;border:1px solid #999;background:#fff;}
+    .bar{position:static;background:#fff;border-bottom:1px solid #999;}
+    .bar-t{display:block !important;max-width:none;color:#333;}
+    .sec{border-bottom:1px dashed #bbb;break-inside:avoid;}
+    .cmd,.cmd b,.pth,.fl,.fp,.fp b,.name{color:#000;}
+    .cm,.fx,.handle,.bio,.stats span,.avw figcaption{color:#555;}
+    .av{border:1px solid #999;}
+    .avf::before,.avf::after{border-color:#000;}
+    .avw figcaption b,.hb{color:#000;}
+    .stt{color:#000;border-color:#999;background:#fff;}
+    .stt i{background:#000;}
+    .stats{background:#999;border-color:#999;}
+    .stats>div{background:#fff;}
+    .stats b{color:#000;}
+    .bio::before{color:#000;}
+    .kv .r{border-bottom-color:#ccc;}
+    .kv dt{color:#444;}
+    .kv dd{color:#000;}
+    .kv dd.q::before,.kv dd.q::after{color:#777;}
+    .kv dd a{color:#000;text-decoration:underline;}
+    .ld{border-bottom-color:#999;}
+    .skills{border-color:#999;}
+    .sk{border-bottom-color:#ccc;color:#000;}
+    .perm{color:#666;}
+    .bf{color:#000;}
+    .br{color:#aaa;}
+    .pct{color:#000;}
+    .ln{border-color:#999;color:#000;}
+    .ln .c{color:#000;}
+    .ln .u{color:#444;}
+    .ln .arr{display:none;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua đến nội dung</a>
+<div id="prog" aria-hidden="true"></div>
+<div id="intro" hidden aria-hidden="true">
+  <div class="in-term">
+    <div class="in-head" id="inHead">lusilfer-bios v2.6 — tty1</div>
+    <div id="inLog"><div id="inCur"><span class="cur sm"></span></div></div>
+    <div class="in-bar"><span id="inFill"></span></div>
+    <div class="in-enter" id="inEnter" hidden>[ CHẠM VÀO BẤT KỲ ĐÂU ĐỂ VÀO ]</div>
+    <div class="in-foot"><span id="inPct">0%</span><span id="inHint">đang khởi tạo — vui lòng chờ</span></div>
+  </div>
+</div>
+<main class="term" id="main">
+  <header class="bar">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="bar-t">guest@lusilfer: ~/portfolio — bash</span>
+    <nav class="tabs" aria-label="Điều hướng">
+      <a class="tab on" href="#sec-id" aria-label="Danh tính"><span class="tf">0:whoami</span><span class="ts">0</span></a>
+      <a class="tab" href="#sec-profile" aria-label="Thông tin cá nhân"><span class="tf">1:profile</span><span class="ts">1</span></a>
+      <a class="tab" href="#sec-skills" aria-label="Kỹ năng"><span class="tf">2:skills</span><span class="ts">2</span></a>
+      <a class="tab" href="#sec-contact" aria-label="Liên hệ"><span class="tf">3:contact</span><span class="ts">3</span></a>
+    </nav>
+    <button class="pbtn" id="sndBtn" type="button" aria-pressed="true" aria-label="Bật tắt nhạc nền">[ sound:on ]</button>
+    <button class="pbtn" id="printBtn" type="button" aria-label="In hoặc lưu CV dạng PDF">[ print ]</button>
+  </header>
+  <section class="sec" id="sec-id" aria-label="Danh tính">
+    <h2 class="cmd"><span aria-hidden="true"><b>guest@lusilfer</b>:<span class="pth">~</span>$ </span>whoami <span class="fl">--verbose</span> <span class="cm"># danh tính</span></h2>
+    <div class="idg">
+      <figure class="avw">
+        <div class="avf" id="avf">
+          <div class="av" id="av">
+            <img src="avatar.jpg" alt="Avatar Anh Lusilfer">
+            <i class="tex" aria-hidden="true"></i>
+            <i class="scan sa" aria-hidden="true"></i>
+            <i class="scan sb" aria-hidden="true"></i>
+          </div>
+        </div>
+        <figcaption>avatar.jpg · <b id="avState">STANDBY</b></figcaption>
+      </figure>
+      <div class="idm">
+        <h1 class="name" aria-label="Anh Lusilfer"><span id="typeName" aria-hidden="true"></span><span class="cur" id="twCur" aria-hidden="true"></span></h1>
+        <p class="handle">@anhlusilfer · frontend developer · self-taught</p>
+        <p class="stt"><i aria-hidden="true"></i>READY_FOR_INTERNSHIP</p>
+        <div class="stats" role="list" aria-label="Điểm nổi bật">
+          <div role="listitem"><b data-count="3" data-suf="+">0</b><span>yrs_coding</span></div>
+          <div role="listitem"><b data-count="12" data-suf="+">0</b><span>projects_done</span></div>
+          <div role="listitem"><b data-count="7">0</b><span>languages</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="sec-profile" aria-label="Thông tin cá nhân">
+    <h2 class="cmd"><span aria-hidden="true"><b>guest@lusilfer</b>:<span class="pth">~</span>$ </span>cat ./profile.json <span class="cm"># thông tin cá nhân</span></h2>
+    <p class="bio">Học sinh lớp 12 tự học lập trình từ 2022, tập trung phát triển giao diện web hiệu năng cao, chuẩn truy cập, mượt trên thiết bị di động. Đang tìm cơ hội thực tập hoặc dự án freelance để đưa kỹ năng vào sản phẩm thực tế.</p>
+    <dl class="kv">
+      <div class="r"><dt>full_name</dt><i class="ld" aria-hidden="true"></i><dd class="q">Nguyễn Tuấn Anh</dd></div>
+      <div class="r"><dt>nick_name</dt><i class="ld" aria-hidden="true"></i><dd class="q">Anh Lusilfer</dd></div>
+      <div class="r"><dt>sex</dt><i class="ld" aria-hidden="true"></i><dd class="q">male</dd></div>
+      <div class="r"><dt>date_of_birth</dt><i class="ld" aria-hidden="true"></i><dd class="q">07/11/2009</dd></div>
+      <div class="r"><dt>region</dt><i class="ld" aria-hidden="true"></i><dd class="q">Việt Nam</dd></div>
+      <div class="r"><dt>school</dt><i class="ld" aria-hidden="true"></i><dd><a href="https://thptsangson.phutho.edu.vn/" target="_blank" rel="noopener">THPT Sáng Sơn ↗</a></dd></div>
+      <div class="r"><dt>class</dt><i class="ld" aria-hidden="true"></i><dd class="q">12A8</dd></div>
+      <div class="r"><dt>interest</dt><i class="ld" aria-hidden="true"></i><dd class="q">programming</dd></div>
+      <div class="r"><dt>fav_manga</dt><i class="ld" aria-hidden="true"></i><dd><a href="https://wata-tabe.com/" target="_blank" rel="noopener">Watashi wo Tabetai, Hitodenashi ↗</a></dd></div>
+    </dl>
+  </section>
+  <section class="sec" id="sec-skills" aria-label="Kỹ năng">
+    <h2 class="cmd"><span aria-hidden="true"><b>guest@lusilfer</b>:<span class="pth">~</span>$ </span>ls ./skills <span class="fl">--sort=proficiency</span> <span class="cm"># chạm vào để mở man page</span></h2>
+    <div class="skills">
+      <button class="sk" type="button" data-lang="html"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/></svg>html</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="css"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"/><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95V51.429z"/><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"/><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z"/><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z"/></svg>css</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="js"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="#F7DF1E" d="M1.408 1.408h125.184v125.185H1.408z"/><path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"/></svg>javascript</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="py"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><linearGradient id="pya" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="pyb" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#pya)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" transform="translate(0 10.26)"/><path fill="url(#pyb)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" transform="translate(0 10.26)"/></svg>python</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="cs"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="#9B4F96" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"/><path fill="#68217A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z"/><path fill="#fff" d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1L100 51h4.9l-1.2 6.1h3.8l1.2-6.1h4.8l-1.2 6.1h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.4v-4.7H97zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z"/></svg>c#</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="ts"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="#fff" d="M22.67 47h99.67v73.67H22.67z"/><path fill="#3178C6" d="M1.5 63.91v62.5h125v-125H1.5zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12-.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73L82 101l3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H56.66v46.23H45.15V69.26H28.88v-5a49.19 49.19 0 01.12-5.17C29.08 59 39 59 51 59h21.83z"/></svg>typescript</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+      <button class="sk" type="button" data-lang="lua"><span class="perm" aria-hidden="true">-rwxr-xr-x</span><span class="sid"><svg viewBox="0 0 128 128" aria-hidden="true"><circle cx="64" cy="64" r="63.3" fill="none" stroke="#808080" stroke-width="1.5" stroke-dasharray="5 4.5"/><path fill="#000080" d="M112.956.708c-7.912 0-14.335 6.424-14.335 14.336s6.424 14.335 14.335 14.335 14.335-6.41 14.335-14.335c0-7.912-6.424-14.336-14.335-14.336zM64 15.058c-27.02 0-48.956 21.935-48.956 48.955S36.979 112.97 64 112.97c27.02 0 48.956-21.935 48.956-48.956 0-27.02-21.936-48.956-48.956-48.956z"/><path fill="#fff" d="M84.285 29.392c-7.91 0-14.335 6.424-14.335 14.335s6.424 14.336 14.335 14.336 14.336-6.424 14.336-14.336-6.424-14.335-14.335-14.335zM30.773 56.36v32.119h19.961v-3.611H34.87V56.359Zm57.584 8.37c-3.354 0-6.126.975-7.668 2.692-1.055 1.19-1.488 2.516-1.582 4.801h3.705c.311-2.826 1.988-4.098 5.423-4.098 3.3 0 5.153 1.231 5.153 3.435v.974c0 1.542-.92 2.205-3.827 2.556-5.193.663-5.991.839-7.398 1.407-2.69 1.095-4.057 3.164-4.057 6.166 0 4.193 2.908 6.83 7.574 6.83 2.907 0 5.247-1.014 7.843-3.395.257 2.34 1.407 3.395 3.787 3.395.757 0 1.325-.081 2.515-.392v-2.773a2.917 2.917 0 0 1-.798.095c-1.284 0-1.988-.663-1.988-1.812V71.032c0-4.098-3.002-6.302-8.682-6.302zm-33.742.664V83.19c0 3.84 2.867 6.302 7.357 6.302 3.395 0 5.545-1.19 7.709-4.233v3.219h3.3V65.393h-3.652v13.09c0 4.72-2.475 7.804-6.302 7.804-2.907 0-4.76-1.772-4.76-4.544v-16.35Zm38.773 11.67v4.139c0 1.244-.365 1.988-1.46 3.002-1.502 1.366-3.3 2.07-5.464 2.07-2.867 0-4.544-1.367-4.544-3.706 0-2.42 1.636-3.665 5.558-4.233 3.881-.528 4.68-.703 5.91-1.271z"/></svg>lua</span><span class="sbar" aria-hidden="true"><span class="bf"></span><span class="br"></span></span><span class="pct"></span></button>
+    </div>
+  </section>
+  <section class="sec" id="sec-contact" aria-label="Liên hệ">
+    <h2 class="cmd"><span aria-hidden="true"><b>guest@lusilfer</b>:<span class="pth">~</span>$ </span>cat ./contact.sh <span class="cm"># liên hệ</span></h2>
+    <div class="links">
+      <a class="ln" href="https://www.facebook.com/profile.php?id=61595290078900" target="_blank" rel="noopener"><span class="c">open</span><b>facebook</b><span class="u">/Tuan Anh Nguyen</span><span class="arr" aria-hidden="true">↗</span></a>
+      <a class="ln" href="https://www.tiktok.com/@anhlusilfer" target="_blank" rel="noopener"><span class="c">open</span><b>tiktok</b><span class="u">@anhlusilfer</span><span class="arr" aria-hidden="true">↗</span></a>
+      <a class="ln" href="mailto:ta690620@gmail.com"><span class="c">mail</span><b>email</b><span class="u">ta690620@gmail.com</span><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+  <footer class="foot">
+    <p class="fp" aria-hidden="true"><b>guest@lusilfer</b>:<span class="pth">~</span>$ <span class="cur sm"></span></p>
+    <p class="fx">[process exited with code 0] · © 2026 Nguyễn Tuấn Anh · made with <span class="hb">&lt;3</span></p>
+  </footer>
+</main>
+<div class="modal" id="skPop" aria-hidden="true">
+  <div class="m-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="m-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="m-t" id="mTitle"></span>
+      <button class="m-x" id="skClose" type="button" aria-label="Đóng">[×]</button>
+    </div>
+    <div class="m-body">
+      <div class="meter">
+        <div class="m-lbl"><span>proficiency</span><b id="skPct">0%</b></div>
+        <div class="m-track"><div class="m-fill" id="skFill"></div></div>
+      </div>
+      <p class="m-desc" id="skDesc"></p>
+      <div id="skItems"></div>
+      <div class="m-tags" id="skTags"></div>
+    </div>
+  </div>
+</div>
+<script>
+(()=>{
+  const doc=document,win=window,$=s=>doc.querySelector(s);
+  const on=(t,e,f,o)=>t.addEventListener(e,f,o);
+  const el=(t,c,x)=>{const n=doc.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;};
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const easeOut=k=>1-Math.pow(1-k,3);
+  const block=e=>e.preventDefault();
+  for(const ev of['copy','cut','paste','contextmenu','selectstart','dragstart','dblclick'])on(doc,ev,block);
+  on(doc,'selectionchange',()=>{const s=win.getSelection&&win.getSelection();if(s&&s.rangeCount&&!s.isCollapsed)s.removeAllRanges();});
+  on(doc,'touchstart',e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
+  on(doc,'touchmove',e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
+  for(const ev of['gesturestart','gesturechange','gestureend'])on(doc,ev,block,{passive:false});
+  on(win,'wheel',e=>{if(e.ctrlKey||e.metaKey)e.preventDefault();},{passive:false});
+  on(doc,'keydown',e=>{
+    const k=(e.key||'').toLowerCase();
+    if((e.ctrlKey||e.metaKey)&&k.length===1&&'cxvasup'.includes(k))e.preventDefault();
+    if((e.ctrlKey||e.metaKey)&&['+','-','=','0','_','.'].includes(k))e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&'ijc'.includes(k))e.preventDefault();
+    if(e.metaKey&&e.altKey&&'ijc'.includes(k))e.preventDefault();
+    if(e.key==='F12')e.preventDefault();
+  });
+  const SKILLS={
+    html:{n:'HTML5',lv:92,ds:'Nền tảng vững về ngữ nghĩa và cấu trúc tài liệu, viết markup sạch, chuẩn SEO và thân thiện với trình đọc màn hình.',sk:[['Semantic HTML5','Dùng đúng thẻ theo ngữ nghĩa, tối ưu SEO on-page và khả năng truy cập.'],['Form & Validation','Xây dựng biểu mẫu phức tạp với kiểm tra dữ liệu native, ràng buộc và thông báo lỗi rõ ràng.'],['Responsive Media','Tích hợp ảnh, video, canvas thích ứng mọi kích thước màn hình, tối ưu tải trang.'],['Accessibility (a11y)','Áp dụng ARIA, landmark và thứ tự tiêu đề hợp lý cho mọi đối tượng người dùng.']],tg:['SEO','ARIA','Canvas','SVG','Web Components']},
+    js:{n:'JavaScript',lv:88,ds:'Thành thạo ES6+, xử lý bất đồng bộ và thao tác DOM mượt mà; xây dựng giao diện tương tác không cần framework.',sk:[['ES6+ & Async','Promise, async/await, destructuring, module — viết code hiện đại, dễ bảo trì.'],['DOM & Event','Thao tác DOM hiệu quả, uỷ quyền sự kiện, tối ưu reflow/repaint cho hiệu năng cao.'],['Fetch & REST API','Giao tiếp backend qua fetch, xử lý JSON, quản lý trạng thái tải và lỗi.'],['Animation & Canvas','Tạo hiệu ứng bằng requestAnimationFrame và Canvas 2D, kiểm soát nhịp khung hình.']],tg:['ES6+','Async/Await','DOM','Fetch','Canvas']},
+    css:{n:'CSS3',lv:90,ds:'Thiết kế giao diện hiện đại với Flexbox, Grid và animation; tư duy responsive-first, thẩm mỹ chỉn chu từng chi tiết.',sk:[['Flexbox & Grid','Dàn trang phức tạp, thích ứng đa thiết bị mà không vỡ bố cục.'],['Animation & Transition','Keyframes, easing và transition mượt, tạo chiều sâu và phản hồi trực quan.'],['Responsive Design','Media query, clamp(), container query — giao diện liền mạch từ mobile tới desktop.'],['Glassmorphism & UI','Hiệu ứng kính mờ, gradient, đổ bóng lớp; biến CSS và theme động.']],tg:['Flexbox','Grid','Keyframes','Variables','Glass UI']},
+    cs:{n:'C#',lv:74,ds:'Tư duy hướng đối tượng chắc, làm việc tốt với .NET; viết code rõ ràng, có cấu trúc và dễ mở rộng.',sk:[['OOP & SOLID','Đóng gói, kế thừa, đa hình; áp dụng nguyên lý SOLID vào thiết kế lớp.'],['.NET & WinForms','Xây dựng ứng dụng desktop và tiện ích với .NET, giao diện sự kiện.'],['LINQ & Collection','Truy vấn và biến đổi dữ liệu gọn gàng bằng LINQ, lambda.'],['Async & Exception','Lập trình bất đồng bộ với async/await, xử lý ngoại lệ có kiểm soát.']],tg:['OOP','.NET','LINQ','WinForms','SOLID']},
+    lua:{n:'Lua',lv:68,ds:'Viết script gọn nhẹ, nhanh nhúng; hiểu rõ metatable và mô hình hướng đối tượng bằng table.',sk:[['Scripting & Automation','Viết script tự động hoá, mở rộng chức năng cho ứng dụng và game.'],['Metatable & OOP','Mô phỏng lớp, kế thừa và toán tử nạp chồng qua metatable.'],['Table & Data','Cấu trúc dữ liệu table linh hoạt, xử lý mảng và từ điển hiệu quả.'],['Coroutines & Module','Lập trình đồng thời với coroutine, tổ chức code theo module tái sử dụng.']],tg:['Scripting','Metatable','Coroutines','Module']},
+    py:{n:'Python',lv:76,ds:'Code Pythonic, gọn và dễ đọc; mạnh về tự động hoá, xử lý dữ liệu và viết công cụ dòng lệnh.',sk:[['Pythonic Core','List/dict comprehension, generator, decorator — code ngắn, rõ, hiệu quả.'],['Automation & Script','Tự động hoá tác vụ lặp, xử lý file hàng loạt, viết tool CLI.'],['Data & File I/O','Đọc ghi JSON/CSV, thao tác dữ liệu với thư viện chuẩn và pandas.'],['OOP & Module','Tổ chức package, lớp và module khoa học, dễ bảo trì.']],tg:['Comprehension','Generator','pandas','CLI','OOP']},
+    ts:{n:'TypeScript',lv:72,ds:'Kiểu hoá chặt chẽ cho JavaScript, giảm lỗi runtime; viết interface và generic tái sử dụng cao.',sk:[['Type System','Interface, type alias, union và narrowing — mô hình hoá dữ liệu chính xác.'],['Generics & Utility','Generic và utility type (Partial, Pick, Record) cho code linh hoạt, an toàn.'],['Strict & Safety','Bật strict mode, kiểm soát null/undefined, loại bỏ lỗi ngay khi biên dịch.'],['Tooling & Config','Cấu hình tsconfig, tích hợp ESLint và quy trình build chuẩn dự án.']],tg:['Interface','Generics','Strict','tsconfig','Utility Types']}
+  };
+  const typeEl=$('#typeName'),cur=$('#twCur');
+  const type=async(to,speed)=>{
+    const from=typeEl.textContent,grow=to.length>from.length;
+    cur.classList.add('typing');
+    for(let i=from.length;grow?i<=to.length:i>=0;i+=grow?1:-1){
+      typeEl.textContent=(grow?to:from).slice(0,i);
+      await sleep(speed);
+    }
+    cur.classList.remove('typing');
+  };
+  const startTypewriter=()=>{
+    (async()=>{
+      if(reduce){typeEl.textContent='Anh Lusilfer';return;}
+      await sleep(300);
+      for(;;){
+        await type('Anhdzvcl',120);await sleep(1100);
+        await type('',60);await sleep(700);
+        await type('Anh Lusilfer',140);await sleep(15000);
+        await type('',60);await sleep(700);
+      }
+    })();
+  };
+  const countUp=n=>{
+    const target=+n.dataset.count,suf=n.dataset.suf||'';
+    if(reduce){n.textContent=target+suf;return;}
+    const t0=performance.now();
+    const step=t=>{
+      const k=Math.min(1,(t-t0)/900);
+      n.textContent=Math.round(target*easeOut(k))+suf;
+      if(k<1)requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const counters=doc.querySelectorAll('[data-count]');
+  const initCounters=()=>{
+    if('IntersectionObserver'in win){
+      const io=new IntersectionObserver(es=>{
+        for(const en of es)if(en.isIntersecting){countUp(en.target);io.unobserve(en.target);}
+      },{threshold:.5});
+      counters.forEach(n=>io.observe(n));
+    }else counters.forEach(countUp);
+  };
+  const setD=(sel,base,step)=>doc.querySelectorAll(sel).forEach((n,i)=>{n.classList.add('rv');n.style.setProperty('--rd',(base+i*step)+'s');});
+  setD('.sec',0,0);setD('.foot',0,0);setD('.avw',.05,0);setD('.idm',.12,0);setD('.stats',.2,0);setD('.bio',.05,0);setD('.kv .r',.08,.05);setD('.sk',.05,.06);setD('.ln',.05,.08);
+  const rvs=[...doc.querySelectorAll('.rv')];
+  const initReveal=()=>{
+    if(reduce||!('IntersectionObserver'in win)){rvs.forEach(n=>n.classList.add('seen'));}
+    else{
+      const io=new IntersectionObserver(es=>{
+        for(const en of es)if(en.isIntersecting){en.target.classList.add('seen');io.unobserve(en.target);}
+      },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+      rvs.forEach(n=>io.observe(n));
+    }
+  };
+  const av=$('#av'),avState=$('#avState');
+  const armAvatar=()=>{
+    avState.textContent='RENDERING';
+    const done=()=>{av.classList.add('done');avState.textContent='RENDER_OK';};
+    on(av.querySelector('.sa'),'animationiteration',done,{once:true});
+    setTimeout(done,3800);
+  };
+  let bgm=null,soundOn=true,rampRaf=0;
+  const sndBtn=$('#sndBtn');
+  const setSndLabel=()=>{sndBtn.textContent=soundOn?'[ sound:on ]':'[ sound:off ]';sndBtn.setAttribute('aria-pressed',String(soundOn));sndBtn.classList.toggle('off',!soundOn);};
+  const rampTo=(to,ms)=>{
+    cancelAnimationFrame(rampRaf);
+    const from=bgm.volume,t0=performance.now();
+    const step=t=>{
+      const k=Math.min(1,(t-t0)/ms);
+      bgm.volume=from+(to-from)*k;
+      if(k<1)rampRaf=requestAnimationFrame(step);
+    };
+    rampRaf=requestAnimationFrame(step);
+  };
+  const startMusic=()=>{
+    if(bgm)return;
+    bgm=new Audio();
+    bgm.preload='auto';
+    bgm.loop=true;
+    bgm.src='music.mp3';
+    bgm.volume=.3;
+    on(bgm,'error',()=>{soundOn=false;sndBtn.textContent='[ sound:-- ]';sndBtn.disabled=true;sndBtn.classList.add('off');});
+    bgm.play().catch(()=>{});
+    setTimeout(()=>{if(bgm&&!bgm.error)rampTo(1,1200);},3000);
+  };
+  on(sndBtn,'click',()=>{
+    if(!bgm||bgm.error)return;
+    soundOn=!soundOn;
+    bgm.muted=!soundOn;
+    setSndLabel();
+    if(soundOn&&bgm.paused)bgm.play().catch(()=>{});
+  });
+  on(doc,'visibilitychange',()=>{
+    if(!bgm)return;
+    if(doc.hidden)bgm.pause();
+    else if(soundOn)bgm.play().catch(()=>{});
+  });
+  const intro=$('#intro'),inHead=$('#inHead'),inLog=$('#inLog'),inCur=$('#inCur'),inFill=$('#inFill'),inPct=$('#inPct'),inEnter=$('#inEnter'),inHint=$('#inHint');
+  const addLine=(t,c)=>{const n=el('div',c,t);inLog.insertBefore(n,inCur);inLog.scrollTop=inLog.scrollHeight;return n;};
+  const setP=p=>{inFill.style.width=p+'%';inPct.textContent=p+'%';};
+  const SCRIPT=[
+    {m:'head',t:'lusilfer-bios v2.6 — POST',d:220},
+    {t:'[ OK ] lusilfer-bios v2.6 — power-on self test',c:'ok',d:280},
+    {t:'> cpu0: virtual core @ 3.40GHz ...... online',d:170},
+    {t:'> gpu0: canvas2d pipeline ........... online',d:170},
+    {m:'mem'},
+    {t:'> rtc: sync UTC+7 ................... ok',d:150},
+    {t:'> mount /dev/portfolio .............. ok',d:200},
+    {m:'head',t:'lusilfer-bios v2.6 — loading modules',d:180},
+    {t:'> load identity.ko .................. ok',d:150},
+    {t:'> load typewriter.daemon ............ pid 42',d:150},
+    {t:'> load scanner.ko [2 beams] ......... ok',d:150},
+    {t:'0x00A1F3  4C 55 53 49 4C 46 45 52 2E 45 58 45',c:'hex',d:35},
+    {t:'0x00A204  6D 6F 75 6E 74 20 2F 64 65 76 2F 70',c:'hex',d:35},
+    {t:'0x00A215  6F 72 74 66 6F 6C 69 6F 20 2E 2E 2E',c:'hex',d:35},
+    {t:'0x00A226  4F 4B 20 5B 69 64 65 6E 74 69 74 79',c:'hex',d:35},
+    {t:'> fetch avatar.jpg .................. 200 OK',d:220},
+    {t:'> decode avatar: 148x148 rgb ........ ok',d:160},
+    {t:'> parse profile.json ................ 9 fields',d:200},
+    {t:'> validate schema ................... pass',d:150},
+    {t:'0x00B7C2  48 54 4D 4C 20 43 53 53 20 4A 53 20',c:'hex',d:35},
+    {t:'0x00B7D3  50 59 54 48 4F 4E 20 4C 55 41 20 43',c:'hex',d:35},
+    {t:'0x00B7E4  53 48 41 52 50 20 54 59 50 45 53 43',c:'hex',d:35},
+    {t:'> index ./skills .................... 7 entries',d:200},
+    {t:'> sort --by=proficiency ............. done',d:160},
+    {t:'> link contact.sh ................... 3 routes',d:180},
+    {m:'head',t:'lusilfer-bios v2.6 — compiling ui',d:180},
+    {m:'type',t:'> compile ui.css',sp:16,tail:' .................... 12ms',d:160},
+    {t:'> bundle app.js ..................... 8ms',d:160},
+    {t:'> tree-shake dead code .............. -0kb',d:150},
+    {t:'> minify: css/js/html ............... ok',d:160},
+    {t:'0x00C9D4  54 59 50 45 53 43 52 49 50 54 21 20',c:'hex',d:35},
+    {t:'0x00C9E5  6D 69 6E 69 66 79 20 2D 2D 61 6C 6C',c:'hex',d:35},
+    {t:'0x00C9F6  74 68 65 6D 65 3A 6D 6F 6E 6F 2D 77',c:'hex',d:35},
+    {t:'> inject theme: mono-white .......... ok',d:180},
+    {t:'> wire interactions ................. 7 handlers',d:180},
+    {t:'> a11y audit ........................ pass',d:220},
+    {t:'> contrast check .................... AAA',d:160},
+    {t:'> render pipeline ................... 60fps',d:180},
+    {m:'head',t:'lusilfer-bios v2.6 — ready',d:160},
+    {t:'> warm cache ........................ ok',d:150},
+    {t:'> spawn shell: guest@lusilfer ....... tty1',d:200},
+    {t:'[ OK ] all systems nominal',c:'ok',d:350},
+    {m:'type',t:'ACCESS GRANTED — welcome, guest',c:'ok',sp:20,d:500}
+  ];
+  let awaiting=false,entered=false;
+  const memCheck=async()=>{
+    const n=addLine('> mem check: 0 KB','');
+    if(reduce){n.textContent='> mem check: 65536 KB ............... ok';return;}
+    const t0=performance.now(),D=700;
+    await new Promise(res=>{
+      const step=t=>{
+        const k=Math.min(1,(t-t0)/D);
+        n.textContent='> mem check: '+Math.round(65536*easeOut(k))+' KB';
+        inLog.scrollTop=inLog.scrollHeight;
+        if(k<1)requestAnimationFrame(step);else res();
+      };
+      requestAnimationFrame(step);
+    });
+    n.textContent='> mem check: 65536 KB ............... ok';
+  };
+  const typeLine=async s=>{
+    const n=addLine('',s.c||'');
+    if(reduce){n.textContent=s.t+(s.tail||'');await sleep(s.d*.4);return;}
+    for(const ch of s.t){
+      n.textContent+=ch;
+      inLog.scrollTop=inLog.scrollHeight;
+      await sleep(s.sp);
+    }
+    if(s.tail)n.textContent+=s.tail;
+    await sleep(s.d);
+  };
+  const reveal=()=>{
+    doc.body.classList.remove('booting','lock');
+    doc.body.classList.add('entered');
+    startTypewriter();
+    initCounters();
+    initReveal();
+    armAvatar();
+    measure();
+    setActive(pick(win.scrollY||0,doc.documentElement.scrollHeight-win.innerHeight));
+  };
+  const enter=(sound=true)=>{
+    if(entered)return;
+    entered=true;
+    awaiting=false;
+    if(sound)startMusic();
+    reveal();
+    intro.classList.add('hide');
+    setTimeout(()=>intro.remove(),550);
+  };
+  const armGate=()=>{
+    awaiting=true;
+    intro.classList.add('gate');
+    inHead.textContent='lusilfer-bios v2.6 — awaiting input';
+    addLine('[ OK ] boot complete — operator input required','ok');
+    setP(100);
+    inEnter.hidden=false;
+    inHint.textContent='chạm / phím bất kỳ để vào';
+  };
+  on(doc,'pointerdown',()=>{if(awaiting)enter();});
+  on(doc,'keydown',()=>{if(awaiting)enter();});
+  doc.body.classList.add('booting','lock');
+  intro.hidden=false;
+  (async()=>{
+    const K=reduce?.4:1;
+    await sleep(200*K);
+    for(let i=0;i<SCRIPT.length;i++){
+      const s=SCRIPT[i];
+      if(s.m==='head'){inHead.textContent=s.t;await sleep(s.d*K);}
+      else if(s.m==='mem'){await memCheck();}
+      else if(s.m==='type'){await typeLine(s);}
+      else{addLine(s.t,s.c||'');await sleep(s.d*K);}
+      setP(Math.round((i+1)/SCRIPT.length*100));
+    }
+    armGate();
+  })();
+  const avImg=$('.av img');
+  const avFallback=()=>{if(avImg&&avImg.parentNode)avImg.replaceWith(el('div','av-fb','AL'));};
+  if(avImg){
+    on(avImg,'error',avFallback,{once:true});
+    if(avImg.complete&&avImg.naturalWidth===0)avFallback();
+  }
+  const bar=$('.bar'),tabs=[...doc.querySelectorAll('.tab')];
+  const secs=['sec-id','sec-profile','sec-skills','sec-contact'].map(id=>doc.getElementById(id)).filter(Boolean);
+  let barH=44,curId=null,lockId=null,lockTarget=0,lockTimer=0;
+  const measure=()=>{barH=Math.ceil(bar.getBoundingClientRect().height);doc.documentElement.style.setProperty('--barh',barH+'px');};
+  const topOf=s=>{let t=0,n=s;while(n){t+=n.offsetTop||0;n=n.offsetParent;}return t;};
+  const maxY=()=>Math.max(0,doc.documentElement.scrollHeight-win.innerHeight);
+  const pick=(y,max)=>{
+    const line=y+barH+12;
+    let cur=secs.length?secs[0].id:null;
+    for(const s of secs)if(topOf(s)<=line)cur=s.id;
+    if(max>0&&y>=max-2&&secs.length)cur=secs[secs.length-1].id;
+    return cur;
+  };
+  const setActive=id=>{
+    if(!id||id===curId)return;
+    curId=id;
+    tabs.forEach(t=>t.classList.toggle('on',t.getAttribute('href')==='#'+id));
+    const t=tabs.find(x=>x.classList.contains('on'));
+    const box=t&&t.parentElement;
+    if(box&&box.scrollWidth>box.clientWidth+1){
+      const l=t.offsetLeft-(box.clientWidth-t.offsetWidth)/2;
+      box.scrollTo({left:Math.max(0,l),behavior:reduce?'auto':'smooth'});
+    }
+  };
+  const release=()=>{if(lockId){lockId=null;clearTimeout(lockTimer);}};
+  const goTo=id=>{
+    const s=doc.getElementById(id);
+    if(!s)return;
+    measure();
+    const target=Math.min(Math.max(0,Math.round(topOf(s)-barH-10)),maxY());
+    lockId=id;
+    lockTarget=target;
+    setActive(id);
+    win.scrollTo({top:target,behavior:reduce?'auto':'smooth'});
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+    clearTimeout(lockTimer);
+    lockTimer=setTimeout(release,2500);
+  };
+  tabs.forEach(t=>on(t,'click',e=>{e.preventDefault();goTo(t.getAttribute('href').slice(1));}));
+  for(const ev of['pointerdown','wheel','touchstart'])on(doc,ev,release,{passive:true});
+  on(win,'scrollend',()=>{release();setActive(pick(win.scrollY||0,maxY()));});
+  on(win,'resize',measure,{passive:true});
+  if('ResizeObserver'in win)new ResizeObserver(measure).observe(bar);
+  if(doc.fonts&&doc.fonts.ready)doc.fonts.ready.then(()=>{measure();if(!lockId)setActive(pick(win.scrollY||0,maxY()));});
+  const prog=$('#prog'),avf=$('#avf');let tick=false;
+  const onScroll=()=>{
+    if(tick)return;
+    tick=true;
+    requestAnimationFrame(()=>{
+      tick=false;
+      const y=win.scrollY||0,max=maxY();
+      prog.style.transform=`scaleX(${max>0?Math.min(1,y/max):0})`;
+      if(!reduce&&avf)avf.style.transform=`translateY(${Math.min(20,y*.05).toFixed(1)}px)`;
+      if(lockId){if(Math.abs(y-lockTarget)<2)release();}
+      else setActive(pick(y,max));
+    });
+  };
+  on(win,'scroll',onScroll,{passive:true});
+  measure();
+  setActive(pick(win.scrollY||0,maxY()));
+  onScroll();
+  const skPop=$('#skPop'),mTitle=$('#mTitle'),skPct=$('#skPct'),skFill=$('#skFill'),skDesc=$('#skDesc'),skItems=$('#skItems'),skTags=$('#skTags'),skClose=$('#skClose');
+  let focusBack=null;
+  const FOC='button:not(:disabled),a[href],[tabindex]:not([tabindex="-1"])';
+  const openSkill=key=>{
+    const d=SKILLS[key];
+    if(!d)return;
+    mTitle.textContent='man '+key;
+    skPct.textContent=d.lv+'%';
+    skDesc.textContent=d.ds;
+    skItems.innerHTML='';
+    d.sk.forEach(s=>{
+      const it=el('div','it');
+      it.appendChild(el('b',null,s[0]));
+      it.appendChild(el('span',null,s[1]));
+      skItems.appendChild(it);
+    });
+    skTags.innerHTML='';
+    d.tg.forEach(t=>skTags.appendChild(el('span',null,t)));
+    skFill.style.width='0%';
+    focusBack=doc.activeElement;
+    skPop.classList.add('show');
+    skPop.setAttribute('aria-hidden','false');
+    doc.body.classList.add('lock');
+    requestAnimationFrame(()=>{
+      skClose.focus();
+      requestAnimationFrame(()=>{skFill.style.width=d.lv+'%';});
+    });
+  };
+  const closeSkill=()=>{
+    skPop.classList.remove('show');
+    skPop.setAttribute('aria-hidden','true');
+    doc.body.classList.remove('lock');
+    if(focusBack&&focusBack.focus){focusBack.focus();focusBack=null;}
+  };
+  doc.querySelectorAll('.sk').forEach(b=>{
+    const d=SKILLS[b.dataset.lang];
+    if(!d)return;
+    const fill=Math.round(d.lv/10);
+    b.querySelector('.bf').textContent='█'.repeat(fill);
+    b.querySelector('.br').textContent='░'.repeat(10-fill);
+    b.querySelector('.pct').textContent=d.lv+'%';
+    b.setAttribute('aria-label',`${d.n} — ${d.lv}%, mở chi tiết`);
+    on(b,'click',()=>openSkill(b.dataset.lang));
+  });
+  on(skClose,'click',closeSkill);
+  on(skPop,'click',e=>{if(e.target===skPop)closeSkill();});
+  on(doc,'keydown',e=>{
+    if(!skPop.classList.contains('show'))return;
+    if(e.key==='Escape'){closeSkill();return;}
+    if(e.key==='Tab'){
+      const f=[...skPop.querySelectorAll(FOC)].filter(n=>n.getClientRects().length);
+      if(!f.length)return;
+      const a=f[0],b=f[f.length-1],c=doc.activeElement;
+      if(e.shiftKey&&(c===a||!skPop.contains(c))){e.preventDefault();b.focus();}
+      else if(!e.shiftKey&&(c===b||!skPop.contains(c))){e.preventDefault();a.focus();}
+    }
+  });
+  on($('#printBtn'),'click',()=>win.print());
+  on(win,'beforeprint',()=>{
+    enter(false);
+    rvs.forEach(n=>n.classList.add('seen'));
+    av.classList.add('done');
+    avState.textContent='RENDER_OK';
+    typeEl.textContent='Anh Lusilfer';
+    counters.forEach(n=>{n.textContent=n.dataset.count+(n.dataset.suf||'');});
+  });
+})();
+</script>
+</body>
+</html>
